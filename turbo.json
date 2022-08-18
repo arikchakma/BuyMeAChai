@@ -10,6 +10,9 @@
     },
     "dev": {
       "cache": false
+    },
+    "clean": {
+      "cache": false
     }
   },
   "globalDependencies": [".env", "$GOERLI_URL", "$PRIVATE_KEY"]

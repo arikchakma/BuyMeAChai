@@ -1,10 +1,9 @@
-import { Button } from "ui";
+import Head from "next/head";
 
-export default function Web() {
+export default function Home() {
   return (
-    <div>
-      <h1>Web</h1>
-      <Button />
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <div>Hello</div>
     </div>
   );
 }
