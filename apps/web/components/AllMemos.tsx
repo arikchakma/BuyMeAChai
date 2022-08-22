@@ -53,7 +53,7 @@ export default function AllMemos() {
 
               <h1 className="bg-slate-200 p-4 py-2">
                 From: {memo.name} at{' '}
-                {new Date(+memo.timestamp?.toString()).toUTCString()}
+                {new Date(+memo.timestamp?.toString() * 1000).toUTCString()}
               </h1>
             </div>
           );
