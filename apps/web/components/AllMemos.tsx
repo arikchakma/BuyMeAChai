@@ -15,7 +15,7 @@ export default function AllMemos() {
       ...prevState,
       {
         address: from,
-        timestamp: new Date(timestamp * 1000),
+        timestamp,
         message,
         name,
       },
