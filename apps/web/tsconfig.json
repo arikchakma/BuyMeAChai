@@ -1,5 +1,16 @@
 {
   "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/buttons/*": ["components/buttons/*"],
+      "@/lib/*": ["lib/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/utils/*": ["utils/*"],
+      "@/contracts/*": ["contracts/*"]
+    }
+  },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

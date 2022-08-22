@@ -15,5 +15,10 @@
       "cache": false
     }
   },
-  "globalDependencies": [".env", "$GOERLI_URL", "$PRIVATE_KEY"]
+  "globalDependencies": [
+    ".env",
+    "$GOERLI_URL",
+    "$PRIVATE_KEY",
+    "$GOERLI_API_KEY"
+  ]
 }

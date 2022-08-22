@@ -1,4 +1,4 @@
-const hre = require("hardhat");
+const hre = require('hardhat');
 
 // Returns the Ether balance of a given address.
 async function getBalance(address) {
@@ -33,39 +33,40 @@ async function main() {
   const [owner, tipper, tipper2, tipper3] = await hre.ethers.getSigners();
 
   // We get the contract to deploy.
-  const BuyMeAChai = await hre.ethers.getContractFactory("BuyMeAChai");
+  const BuyMeAChai = await hre.ethers.getContractFactory('BuyMeAChai');
   const buyMeAChai = await BuyMeAChai.deploy();
 
   // Deploy the contract.
   await buyMeAChai.deployed();
-  console.log("BuyMeAChai deployed to:", buyMeAChai.address);
+  console.log('BuyMeAChai deployed to:', buyMeAChai.address);
+  console.log(await buyMeAChai.signer.address);
 
   // Check balances before the Chai purchase.
   const addresses = [owner.address, tipper.address, buyMeAChai.address];
-  console.log("== start ==");
+  console.log('== start ==');
   await printBalances(addresses);
 
   // Buy the owner a few Chais.
-  const tip = { value: hre.ethers.utils.parseEther("1") };
-  await buyMeAChai.connect(tipper).buyChai("Carolina", "You're the best!", tip);
-  await buyMeAChai.connect(tipper2).buyChai("Vitto", "Amazing teacher", tip);
+  const tip = { value: hre.ethers.utils.parseEther('1') };
+  await buyMeAChai.connect(tipper).buyChai('Carolina', "You're the best!", tip);
+  await buyMeAChai.connect(tipper2).buyChai('Vitto', 'Amazing teacher', tip);
   await buyMeAChai
     .connect(tipper3)
-    .buyChai("Kay", "I love my Proof of Knowledge", tip);
+    .buyChai('Kay', 'I love my Proof of Knowledge', tip);
 
   // Check balances after the Chai purchase.
-  console.log("== bought Chai ==");
+  console.log('== bought Chai ==');
   await printBalances(addresses);
 
   // Withdraw.
   await buyMeAChai.connect(owner).withdrawTips();
 
   // Check balances after withdrawal.
-  console.log("== withdrawTips ==");
+  console.log('== withdrawTips ==');
   await printBalances(addresses);
 
   // Check out the memos.
-  console.log("== memos ==");
+  console.log('== memos ==');
   const memos = await buyMeAChai.getMemos();
   printMemos(memos);
 }
@@ -74,7 +75,7 @@ async function main() {
 // and properly handle errors.
 main()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
     process.exit(1);
   });
